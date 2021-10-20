@@ -14,6 +14,42 @@
         <br>
         <br>
 
+
+    {% if current_user.is_authenticated %} <!-- Check if user's logged -->
+
+
+    <!--/.jumbotron -->
+    <div class="jumbotron bg-dark">
+
+        <h1 class="display-4">Bem-vindo, <u>{{ current_user.fname }} {{ current_user.lname }}</u>!</h1>
+        <br>
+
+            <p class="lead">Para enviar o arquivo CNAB basta clicar no botão Browse e depois em Enviar.
+            </p>
+
+            <hr class="my-4 bg-light">
+
+
+            <form enctype="multipart/form-data" action="{{ url_for('home.upload_file') }}" method="POST">
+
+                <div class="form-group">
+                    <p>Upload File: 
+                        <input type="file" name="file" />
+                    </p>
+                </div>
+
+                <button class="btn btn-outline-light btn-lg bg-success" type="submit" style="color: white;">Enviar</a>
+
+            </form>
+
+
+    <!--/.jumbotron -->
+    </div>
+
+
+    {% else %} <!-- Check if user's logged -->
+
+
         <!--/.jumbotron -->
           <div class="jumbotron bg-dark">
 
@@ -27,25 +63,17 @@
 
 
                 <hr class="my-4 bg-light">
-                <p class="lead">Pronto para começar?</p>
+                <p class="lead">Já é cadastrado? Só clicar no botão de login ou ir em Profile para logar =]</p>
 
                 <a class="btn btn-outline-light btn-lg bg-success" href="{{ url_for('register.register_user') }}" style="color: white;">Registrar</a>
+                <a class="btn btn-outline-success btn-lg bg-succeess" href="{{ url_for('login.log_user') }}" style="color: white;">Login</a>
 
         <!--/.jumbotron -->
         </div>
 
-
-
-
-        <form enctype="multipart/form-data" action="{{ url_for('home.upload_file') }}" method="POST">
-
-            <p>Upload File: <input type="file" name="file" /></p>
-
-
-            <button class="btn btn-outline-light btn-md bg-dark" type="submit" style="color: white;">Upload</button>
-
-        </form>
-
     </div>
+
+
+    {% endif %} <!-- Check if user's logged -->
 
 {% endblock %}

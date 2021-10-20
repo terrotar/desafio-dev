@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block head %}
-    <title>ByCoders - Register</title>
+    <title>ByCoders - Login</title>
 {% endblock %}
 
 {% block body %}
@@ -17,7 +17,7 @@
         <!--/.jumbotron -->
         <div class="jumbotron bg-dark">
 
-            <h1 class="display-4"><u>Registrar</u></h1>
+            <h1 class="display-4"><u>Login</u></h1>
             <br>
 
                 <p class="lead">Você já está logado ^^'
@@ -39,39 +39,39 @@
 
 
 
-    <!-- email_error -->
-    {% if email_error %}
+    <!-- email_error/pwd_error -->
+    {% if error %}
 
         <!--/.jumbotron -->
         <div class="jumbotron bg-dark">
 
-            <h1 class="display-4"><u>Registrar</u></h1>
+            <h1 class="display-4"><u>Login</u></h1>
             <br>
 
-                <p class="lead">E-mail já cadastrado no sistema =s
+                <p class="lead">E-mail e/ou senha está incorreta =x
                 </p>
 
         <!--/.jumbotron -->
         </div>
 
 
-    {% else %} <!-- email_error -->
+    {% else %} <!-- email_error/pwd_error -->
 
 
             <!--/.jumbotron -->
             <div class="jumbotron bg-dark">
 
-                <h1 class="display-4"><u>Registrar</u></h1>
+                <h1 class="display-4"><u>Login</u></h1>
                 <br>
     
-                    <p class="lead">Para realizar o cadastro é necessário registrar seu e-mail, senha, nome e sobrenome.
+                    <p class="lead">Para realizar o login é necessário validar seu e-mail e senha cadastrados.
                     </p>
 
             <!--/.jumbotron -->
             </div>
 
 
-        <form action="{{ url_for('register.register_user') }}" method="POST">
+        <form action="{{ url_for('login.log_user') }}" method="POST">
 
         <div class="form-group">
             <label for="email">E-mail</label>
@@ -80,27 +80,18 @@
 
         <div class="form-group">
             <label for="pwd">Senha</label>
-            <input type="password" class="form-control col-4" id="pwd" name="pwd" placeholder="Digite uma senha" required>
+            <input type="password" class="form-control col-4" id="pwd" name="pwd" placeholder="Digite sua senha" required>
         </div>
 
-        <div class="form-group">
-            <label for="fname">Nome</label>
-            <input type="text" class="form-control col-4" id="fname" name="fname" placeholder="Digite seu nome" required>
-        </div>
 
-            <div class="form-group">
-            <label for="lname">Sobrenome</label>
-            <input type="text" class="form-control col-4" id="lname" name="lname" placeholder="Digite seu sobrenome" required>
-            </div>
-
-            <button type="submit" class="btn btn-outline-success btn-lg bg-dark">Cadastrar</button>
+            <button type="submit" class="btn btn-outline-success btn-lg bg-dark">Logar</button>
 
         </form>
 
     </div>
 
 
-    {% endif %} <!-- email_error -->
+    {% endif %} <!-- email_error/pwd_error -->
 
 
 {% endif %} <!-- Check if user's logged -->

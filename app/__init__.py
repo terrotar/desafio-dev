@@ -5,6 +5,7 @@ from .config import db, login_manager, UPLOAD_FOLDER, SECRET_KEY
 # Blueprints
 from .blueprints.home.routes import home
 from .blueprints.register.routes import register
+from .blueprints.login.routes import login
 
 # Models
 from .models.user import User
@@ -27,6 +28,7 @@ def create_app(config):
     # Blueprints
     app.register_blueprint(home)
     app.register_blueprint(register)
+    app.register_blueprint(login)
 
     with app.app_context():
         db.create_all()
