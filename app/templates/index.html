@@ -2,16 +2,47 @@
 {% extends 'base.html' %}
 
 
+{% block head %}
+    <title>Home</title>
+{% endblock %}
+
+
 {% block body %}
 
+
     <div class="container">
+        <br>
+        <br>
+
+        <!--/.jumbotron -->
+          <div class="jumbotron bg-dark">
+
+            <h1 class="display-4"><u>Bem-vindo</u>!</h1>
+            <br>
+
+                <p class="lead">Esta aplicação é um desafio para devs o qual consiste em receber um arquivo do tipo CNAB através de um Upload,
+                tratar o documento, salvar no banco de dados e disponibilzar no site de maneira dinâmica.
+                </p>
+                <p class="lead">Para ter acesso às funcionalidades do site é necessário realizar um cadastro e efetuar o login.</p>
+
+
+                <hr class="my-4 bg-light">
+                <p class="lead">Pronto para começar?</p>
+
+                <button class="btn btn-outline-light btn-lg bg-success" type="submit" style="color: white;">Cadastrar</button>
+
+        <!--/.jumbotron -->
+        </div>
+
+
+
 
         <form enctype="multipart/form-data" action="{{ url_for('home.upload_file') }}" method="POST">
 
             <p>Upload File: <input type="file" name="file" /></p>
 
 
-            <p><input type="submit" value="upload" /></p>
+            <button class="btn btn-outline-light btn-md bg-dark" type="submit" style="color: white;">Upload</button>
 
         </form>
 

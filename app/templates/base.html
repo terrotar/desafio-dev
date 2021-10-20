@@ -4,13 +4,60 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../static/main.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     {% block head %}
     {% endblock %}
-
 </head>
 <body>
+
+
+    <header class="container-fluid">
+        <!--Navbar -->
+        <nav class="mb-1 navbar navbar-expand-lg navbar-dark bg-dark">
+
+            <a class="navbar-brand" href="{{ url_for('home.index') }}">bycoders_</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4"
+            aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
+
+                <ul class="navbar-nav ml-auto">
+
+                    <li class="nav-item active">
+                        <a class="nav-link github" href="https://github.com/terrotar" target="_blank">
+                            GitHub
+                        </a>
+                    </li>
+
+                    <li class="nav-item active">
+                        <a class="nav-link linkedin" href="https://www.linkedin.com/in/pedrog48611b13b/" target="_blank">
+                            LinkedIn
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle profile" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Profile
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
+                            <a class="dropdown-item" href="#">My account</a>
+                            <a class="dropdown-item" href="#">Log out</a>
+                        </div>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </nav>
+  <!--/.Navbar -->
+    </header>
+
 
     {% block body %}
     {% endblock %}
