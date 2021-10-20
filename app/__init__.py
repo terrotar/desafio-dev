@@ -4,6 +4,7 @@ from .config import db, login_manager, UPLOAD_FOLDER, SECRET_KEY
 
 # Blueprints
 from .blueprints.home.routes import home
+from .blueprints.register.routes import register
 
 # Models
 from .models.user import User
@@ -17,7 +18,7 @@ def create_app(config):
     app.config['SECRET_KEY'] = SECRET_KEY
     app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-    app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:postgres@localhost/bycoders_db"
+    app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:postgres@localhost/bycoders"
 
     db.init_app(app)
 
@@ -25,6 +26,7 @@ def create_app(config):
 
     # Blueprints
     app.register_blueprint(home)
+    app.register_blueprint(register)
 
     with app.app_context():
         db.create_all()

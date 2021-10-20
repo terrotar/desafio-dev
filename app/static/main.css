@@ -20,3 +20,8 @@ body nav {
 .jumbotron {
     color: white !important;
 }
+
+
+body .bg-dark {
+    background-color: #1b1b1b !important;
+}

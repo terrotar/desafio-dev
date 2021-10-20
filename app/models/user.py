@@ -2,7 +2,6 @@ from app.config import db, login_manager
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from sqlalchemy.ext.hybrid import hybrid_property
-import requests
 
 
 @login_manager.user_loader
@@ -15,8 +14,8 @@ class User(db.Model, UserMixin):
     id = db.Column("id_user", db.Integer, primary_key=True)
     __email = db.Column("email", db.String, unique=True, nullable=False)
     __password = db.Column("password", db.String, nullable=False)
-    __fname = db.Column("nome", db.String, unique=False, nullable=False)
-    __lname = db.Column("sobrenome", db.String, unique=False, nullable=False)
+    __fname = db.Column("first_name", db.String, unique=False, nullable=False)
+    __lname = db.Column("last_name", db.String, unique=False, nullable=False)
 
     def __init__(self, email, password, fname, lname):
         self.__email = email

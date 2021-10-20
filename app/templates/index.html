@@ -3,7 +3,7 @@
 
 
 {% block head %}
-    <title>Home</title>
+    <title>ByCoders - Home</title>
 {% endblock %}
 
 
@@ -23,13 +23,13 @@
                 <p class="lead">Esta aplicação é um desafio para devs o qual consiste em receber um arquivo do tipo CNAB através de um Upload,
                 tratar o documento, salvar no banco de dados e disponibilzar no site de maneira dinâmica.
                 </p>
-                <p class="lead">Para ter acesso às funcionalidades do site é necessário realizar um cadastro e efetuar o login.</p>
+                <p class="lead">Para ter acesso as funcionalidades do site é necessário realizar um cadastro e efetuar o login.</p>
 
 
                 <hr class="my-4 bg-light">
                 <p class="lead">Pronto para começar?</p>
 
-                <button class="btn btn-outline-light btn-lg bg-success" type="submit" style="color: white;">Cadastrar</button>
+                <a class="btn btn-outline-light btn-lg bg-success" href="{{ url_for('register.register_user') }}" style="color: white;">Registrar</a>
 
         <!--/.jumbotron -->
         </div>
