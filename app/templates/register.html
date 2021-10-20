@@ -6,4 +6,49 @@
 
 {% block body %}
 
+    <div class="container">
+    <br>
+
+
+            <!--/.jumbotron -->
+            <div class="jumbotron bg-dark">
+
+                <h1 class="display-4"><u>Registrar</u></h1>
+                <br>
+    
+                    <p class="lead">Para realizar o cadastro é necessário registrar seu e-mail, senha, nome e sobrenome.
+                    </p>
+
+            <!--/.jumbotron -->
+            </div>
+
+
+        <form>
+
+            <div class="form-group">
+
+            <label for="email">E-mail</label>
+            <input type="email" class="form-control col-4" id="email" name="email" placeholder="Digite seu e-mail" required>
+            <br>
+
+            <div class="form-group">
+            <label for="pwd">Senha</label>
+            <input type="password" class="form-control col-4" id="pwd" name="pwd" placeholder="Digite uma senha" required>
+            </div>
+
+            <label for="fname">Nome</label>
+            <input type="text" class="form-control col-4" id="fname" name="fname" placeholder="Digite seu nome" required>
+            <br>
+
+            <div class="form-group">
+            <label for="lname">Sobrenome</label>
+            <input type="text" class="form-control col-4" id="lname" name="lname" placeholder="Digite seu sobrenome" required>
+            </div>
+
+            <button type="submit" class="btn btn-outline-success btn-lg bg-dark">Submit</button>
+
+        </form>
+
+    </div>
+
 {% endblock %}
