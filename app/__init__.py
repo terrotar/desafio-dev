@@ -1,8 +1,12 @@
 from flask import Flask
 
-from .config import db, UPLOAD_FOLDER, SECRET_KEY
+from .config import db, login_manager, UPLOAD_FOLDER, SECRET_KEY
 
+# Blueprints
 from .blueprints.home.routes import home
+
+# Models
+from .models.user import User
 
 
 def create_app(config):
@@ -13,7 +17,11 @@ def create_app(config):
     app.config['SECRET_KEY'] = SECRET_KEY
     app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
+    app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:postgres@localhost/bycoders_db"
+
     db.init_app(app)
+
+    login_manager.init_app(app)
 
     # Blueprints
     app.register_blueprint(home)
