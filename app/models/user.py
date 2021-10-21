@@ -10,12 +10,15 @@ def get_user(user_id):
 
 
 class User(db.Model, UserMixin):
-    __tablename__ = "usuario"
-    id = db.Column("id_usuario", db.Integer, primary_key=True)
+    __tablename__ = "Usuario"
+    id = db.Column("id_Usuario", db.Integer, primary_key=True)
     __email = db.Column("Email", db.String, unique=True, nullable=False)
     __password = db.Column("Senha", db.String, nullable=False)
     __fname = db.Column("Nome", db.String, unique=False, nullable=False)
     __lname = db.Column("Sobrenome", db.String, unique=False, nullable=False)
+
+    # Relationship
+    files = db.relationship('File', backref='user', lazy=True)
 
     def __init__(self, email, password, fname, lname):
         self.__email = email

@@ -6,6 +6,8 @@ from sqlalchemy.ext.hybrid import hybrid_property
 class File(db.Model):
     __tablename__ = "Documento"
     id = db.Column("id_Documento", db.Integer, primary_key=True)
+    __filename = db.Column("Nome_Documento", db.String, unique=True, nullable=False)
+    __id_user = db.Column("id_Usuario", db.Integer, db.ForeignKey('Usuario.id_Usuario'), nullable=False)
     __id_transaction = db.Column("id_Transacao", db.Integer, db.ForeignKey('Tipo_Transacao.id_Transacao'), nullable=False)
     __date = db.Column("Data", db.Date, unique=False, nullable=False)
     __time = db.Column("Hora", db.Time, unique=False, nullable=False)
@@ -15,7 +17,8 @@ class File(db.Model):
     __owner = db.Column("Dono", db.String, unique=False, nullable=False)
     __store = db.Column("Loja", db.String, unique=False, nullable=False)
 
-    def __init__(self, id_transaction, date, time, value, cpf, card_number, owner, store):
+    def __init__(self, filename, id_transaction, date, time, value, cpf, card_number, owner, store):
+        self.__filename = filename
         self.__id_transaction = id_transaction
         self.__date = date
         self.__time = time
@@ -26,6 +29,15 @@ class File(db.Model):
         self.__store = store
 
     # GETTERS and SETTERS
+
+    # filename
+    @hybrid_property
+    def filename(self):
+        return self.__filename
+
+    @filename.setter
+    def filename(self, filename):
+        self.__filename = filename
 
     # id_transaction
     @hybrid_property
