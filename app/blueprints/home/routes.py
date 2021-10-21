@@ -7,8 +7,6 @@ from ...config import UPLOAD_FOLDER
 
 import os
 
-from loguru import logger
-
 
 # Instance of Blueprint home
 home = Blueprint('home', __name__,
