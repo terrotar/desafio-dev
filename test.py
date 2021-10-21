@@ -1,8 +1,5 @@
 
 
-text = []
-
-
 f = open("CNAB.txt", "r")
 # print(f.read())
 
