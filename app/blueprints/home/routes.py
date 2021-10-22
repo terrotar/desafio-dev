@@ -20,6 +20,11 @@ home = Blueprint('home', __name__,
                  static_folder="static")
 
 
+# Allowed extensions of upload files
+# To have a new one just insert it in the array below
+ALLOWED_EXT = ['csv', 'txt']
+
+
 # homepage
 @home.route('/', methods=['GET', 'POST'])
 def index():
@@ -28,6 +33,11 @@ def index():
     if(request.method == 'POST'):
         file = request.files['file']
         filename = secure_filename(file.filename)
+
+        # Check if there's a valid file and extension
+        check_ext = filename.split('.')
+        if(check_ext[-1] not in ALLOWED_EXT):
+            return render_template('index.html', ext_error=True)
         if(file):
             file.save(os.path.join(UPLOAD_FOLDER, filename))
 

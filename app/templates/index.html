@@ -40,7 +40,7 @@
 
                 <button class="btn btn-outline-light btn-lg bg-success" type="submit" style="color: white;">Enviar</button>
 
-                {% if upload_error %}
+                {% if upload_error %} <!-- Check if file's already in database -->
                 <br>
                 <br>
                     <p class="lead">Arquivo com mesmo nome já está salvo no banco de dados...
@@ -48,14 +48,23 @@
                 {% endif %}
 
 
-                {% if file_error %}
+                {% if file_error %} <!-- Check if exists a file -->
                 <br>
                 <br>
-                    <p class="lead">Selecione um arquivo válido...
+                    <p class="lead">Arquivo não encontrado.
                     </p>
                 {% endif %}
 
-                {% if upload_success %}
+
+                {% if ext_error %} <!-- Check if file's extensions is allowed -->
+                <br>
+                <br>
+                    <p class="lead">Selecione um arquivo com extensão válida(csv, txt).
+                    </p>
+                {% endif %}
+
+
+                {% if upload_success %} <!-- Warning of success upload -->
                 <br>
                 <br>
                     <p class="lead">Arquivo enviado com sucesso!
