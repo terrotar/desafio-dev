@@ -30,7 +30,7 @@
             <hr class="my-4 bg-light">
 
 
-            <form enctype="multipart/form-data" action="{{ url_for('home.upload_file') }}" method="POST">
+            <form enctype="multipart/form-data" action="{{ url_for('home.index') }}" method="POST">
 
                 <div class="form-group">
                     <p>Upload File: 
@@ -38,7 +38,29 @@
                     </p>
                 </div>
 
-                <button class="btn btn-outline-light btn-lg bg-success" type="submit" style="color: white;">Enviar</a>
+                <button class="btn btn-outline-light btn-lg bg-success" type="submit" style="color: white;">Enviar</button>
+
+                {% if upload_error %}
+                <br>
+                <br>
+                    <p class="lead">Arquivo com mesmo nome já está salvo no banco de dados...
+                    </p>
+                {% endif %}
+
+
+                {% if file_error %}
+                <br>
+                <br>
+                    <p class="lead">Selecione um arquivo válido...
+                    </p>
+                {% endif %}
+
+                {% if upload_success %}
+                <br>
+                <br>
+                    <p class="lead">Arquivo enviado com sucesso!
+                    </p>
+                {% endif %}
 
             </form>
 
