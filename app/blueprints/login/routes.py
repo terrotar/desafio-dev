@@ -44,7 +44,7 @@ def profile():
         return render_template('login/profile.html')
 
 
-# Change_pwd
+# Change password
 @login.route('/change/pwd', methods=['GET', 'POST'])
 def change_pwd():
     user = User.query.get(current_user.id)
@@ -55,11 +55,38 @@ def change_pwd():
         old_pwd = request.form['old_pwd']
         new_pwd = request.form['new_pwd']
         if(not user.verify_password(old_pwd)):
-            return render_template('login/login.html',
-                                   error=True)
+            return render_template('login/change_pwd.html',
+                                   pwd_error=True)
         else:
             user.password = new_pwd
             db.session.commit()
             logout_user()
             return render_template('index.html')
+    return render_template('login/profile.html')
+
+
+# Change Data
+@login.route('/change/data', methods=['GET', 'POST'])
+def change_data():
+    user = User.query.get(current_user.id)
+    if(request.method == 'GET'):
+        if(user):
+            return render_template('login/change_data.html')
+        else:
+            return redirect('/')
+    elif(request.method == 'POST'):
+        email = request.form['email']
+        fname = request.form['fname']
+        lname = request.form['lname']
+        pwd = request.form['pwd']
+        if(not user.verify_password(pwd)):
+            return render_template('login/change_data.html',
+                                   pwd_error=True)
+        else:
+            user.email = email
+            user.fname = fname
+            user.lname = lname
+            db.session.commit()
+            logout_user()
+            return redirect('/')
     return render_template('login/profile.html')

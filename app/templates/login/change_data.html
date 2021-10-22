@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+    <title>ByCoders - Change Data</title>
+{% endblock %}
+
+
+{% block body %}
+
+    <div class="container">
+    <br>
+    <br>
+
+
+    {% if current_user.is_authenticated %} <!-- Check if user is logged in -->
+
+
+        <!--/.jumbotron -->
+        <div class="jumbotron bg-dark">
+
+            <h1 class="display-4"><u>Change Data</u></h1>
+            <br>
+
+                <h2 class="display-5">{{ current_user.fname }} {{ current_user.lname }},</h2>
+
+
+                <p class="lead">Digite seus novos dados e a antiga senha para confirmar a mudança.
+                </p>
+
+
+                <p class="lead">Caso desejar manter algum dado, apenas digite novamente o mesmo.
+                </p>
+
+
+                {% if pwd_error %}
+                <hr class="my-4 bg-light">
+                    <p class="lead">Antiga senha incorreta =x</p>
+
+                {% endif %}
+
+        <!--/.jumbotron -->
+        </div>
+
+
+    <form action="{{ url_for('login.change_data') }}" method="POST">
+
+        <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" class="form-control col-4" id="email" name="email" placeholder="{{ current_user.email }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="fname">Nome</label>
+            <input type="text" class="form-control col-4" id="fname" name="fname" placeholder="{{ current_user.fname }}" required>
+        </div>
+
+            <div class="form-group">
+            <label for="lname">Sobrenome</label>
+            <input type="text" class="form-control col-4" id="lname" name="lname" placeholder="{{ current_user.lname }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="pwd">Senha para confirmar</label>
+                <input type="password" class="form-control col-4" id="pwd" name="pwd" placeholder="Digite uma senha" required>
+            </div>
+
+            <button type="submit" class="btn btn-outline-success btn-lg bg-dark">Alterar</button>
+
+        </form>
+
+
+    </div>
+
+    {% endif %} <!-- Check if user is logged in -->
+
+
+{% endblock %}

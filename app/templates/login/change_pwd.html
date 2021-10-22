@@ -28,6 +28,13 @@
                 <p class="lead">Digite sua nova senha e a antiga para confirmar a mudança.
                 </p>
 
+
+                {% if pwd_error %}
+                <hr class="my-4 bg-light">
+                    <p class="lead">Antiga senha incorreta =x</p>
+
+                {% endif %}
+
         <!--/.jumbotron -->
         </div>
 
