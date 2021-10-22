@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+    <title>ByCoders - Profile</title>
+{% endblock %}
+
+
+{% block body %}
+
+    <div class="container">
+    <br>
+    <br>
+
+
+    {% if current_user.is_authenticated %} <!-- Check if user is logged in -->
+
+
+        <!--/.jumbotron -->
+        <div class="jumbotron bg-dark">
+
+            <h1 class="display-4"><u>Profile</u></h1>
+            <br>
+
+                <h2 class="display-5">{{ current_user.fname }} {{ current_user.lname }},</h2>
+
+
+                <p class="lead">Aqui você pode alterar dados da sua conta como senha e outros dados
+                    clicando no botão Alterar Senha, por exemplo.
+                </p>
+
+                <hr class="my-4 bg-light">
+                <p class="lead">Necesita alterar algum dado da sua conta?</p>
+
+                <a class="btn btn-outline-light btn-lg bg-info mr-3" href="{{ url_for('login.change_pwd') }}" style="color: white;">Senha</a>
+                <a class="btn btn-outline-light btn-lg bg-info" href="{{ url_for('login.logout') }}" style="color: white;">Dados</a>
+
+        <!--/.jumbotron -->
+        </div>
+    </div>
+
+
+    {% endif %} <!-- Check if user is logged in -->
+
+
+{% endblock %}

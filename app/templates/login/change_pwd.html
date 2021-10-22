@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+    <title>ByCoders - Change Password</title>
+{% endblock %}
+
+
+{% block body %}
+
+    <div class="container">
+    <br>
+    <br>
+
+
+    {% if current_user.is_authenticated %} <!-- Check if user is logged in -->
+
+
+        <!--/.jumbotron -->
+        <div class="jumbotron bg-dark">
+
+            <h1 class="display-4"><u>Change Password</u></h1>
+            <br>
+
+                <h2 class="display-5">{{ current_user.fname }} {{ current_user.lname }},</h2>
+
+
+                <p class="lead">Digite sua nova senha e a antiga para confirmar a mudança.
+                </p>
+
+        <!--/.jumbotron -->
+        </div>
+
+
+    <form action="{{ url_for('login.change_pwd') }}" method="POST">
+
+        <div class="form-group">
+            <label for="new_pwd">Nova Senha</label>
+            <input type="password" class="form-control col-4" id="new_pwd" name="new_pwd" placeholder="Digite sua nova senha" required>
+        </div>
+
+        <div class="form-group">
+            <label for="old_pwd">Antiga Senha</label>
+            <input type="password" class="form-control col-4" id="old_pwd" name="old_pwd" placeholder="Digite sua antiga senha" required>
+        </div>
+
+
+            <button type="submit" class="btn btn-outline-success btn-lg bg-dark">Alterar</button>
+
+        </form>
+
+
+    </div>
+
+    {% endif %} <!-- Check if user is logged in -->
+
+
+{% endblock %}
