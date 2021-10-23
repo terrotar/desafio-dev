@@ -3,10 +3,10 @@ from sqlalchemy.ext.hybrid import hybrid_property
 
 
 class Transaction(db.Model):
-    __tablename__ = "Tipo_Transacao"
+    __tablename__ = "Transacao"
     id = db.Column("id_Transacao", db.Integer, primary_key=True)
     __description = db.Column("Descricao", db.String, unique=True, nullable=False)
-    __nature = db.Column("Natureza", db.String, nullable=False)
+    __nature = db.Column("Natureza", db.String, unique=False, nullable=False)
     __signal = db.Column("Sinal", db.String, unique=False, nullable=False)
 
     # Relationship

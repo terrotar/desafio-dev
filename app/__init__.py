@@ -11,6 +11,7 @@ from .blueprints.login.routes import login
 from .models.user import User
 from .models.file import File
 from .models.transaction import Transaction
+from.models.store import Store
 
 
 def create_app(config):

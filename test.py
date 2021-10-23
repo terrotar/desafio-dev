@@ -1,5 +1,5 @@
 
-
+soma = 0
 f = open("app/uploads/CNAB.txt", "r")
 for line in f:
     transaction = line[0:1]
@@ -10,6 +10,17 @@ for line in f:
     hr = line[42:48]
     owner = line[48:62]
     store = line[62:80]
+
+    if(transaction == 2) or (transaction == 3) or (transaction == 9):
+        value = -value
+
+    if(store == 'LOJA DO Ó - FILIAL'):
+        soma += value
+
+
+print(soma)
+
+"""
     print({"Transação": f"{transaction}",
            "Data": f"{date}",
            "Valor": f"{value}",
@@ -17,4 +28,4 @@ for line in f:
            "Cartão": f"{card}",
            "Hora": f"{hr}",
            "Dono": f"{owner}",
-           "Loja": f"{store}"}, "\n")
+           "Loja": f"{store}"}, "\n")"""

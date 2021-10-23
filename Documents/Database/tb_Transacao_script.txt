@@ -1,0 +1,22 @@
+
+INSERT INTO "Transacao" VALUES (1, 'Debito', 'Entrada', '+');
+
+INSERT INTO "Transacao" VALUES (2, 'Boleto', 'Saida', '-');
+
+INSERT INTO "Transacao" VALUES (3, 'Financiamento', 'Saida', '-');
+
+INSERT INTO "Transacao" VALUES (4, 'Credito', 'Entrada', '+');
+
+INSERT INTO "Transacao" VALUES (5, 'Recebimento Emprestimo', 'Entrada', '+');
+
+INSERT INTO "Transacao" VALUES (6, 'Vendas', 'Entrada', '+');
+
+INSERT INTO "Transacao" VALUES (7, 'Recebimento TED', 'Entrada', '+');
+
+INSERT INTO "Transacao" VALUES (8, 'Recebimento DOC', 'Entrada', '+');
+
+INSERT INTO "Transacao" VALUES (9, 'Aluguel', 'Saida', '-');
+
+
+
+SELECT * FROM "Transacao";

@@ -10,6 +10,7 @@ from ...config import UPLOAD_FOLDER
 from app.config import db
 
 from app.models.file import File
+from app.models.store import Store
 
 import os
 
@@ -32,12 +33,16 @@ def index():
         return render_template('index.html')
     if(request.method == 'POST'):
         file = request.files['file']
+
+        # Set a secure filename to the file sent
         filename = secure_filename(file.filename)
 
         # Check if there's a valid file and extension
         check_ext = filename.split('.')
         if(check_ext[-1] not in ALLOWED_EXT):
             return render_template('index.html', ext_error=True)
+
+        # Save uploaded file inside UPLOAD_FOLDER
         if(file):
             file.save(os.path.join(UPLOAD_FOLDER, filename))
 
@@ -46,7 +51,7 @@ def index():
             if(check_file):
                 return render_template('index.html', upload_error=True)
 
-            # Split file by it's values
+            # Split saved file by it's values
             doc = open(f"{UPLOAD_FOLDER}/{filename}", "r")
             for line in doc:
                 transaction = line[0:1]
@@ -58,21 +63,36 @@ def index():
                 owner = line[48:62]
                 store = line[62:80]
 
-                # Instance a new object and add it in database
+                # Set value into + or - to add in store.balance
+                if(transaction == 2) or (transaction == 3) or (transaction == 9):
+                    value = -value
+
+                # Check if already exists that store and create if not
+                check_store = Store.query.filter_by(name=store).first()
+                if(not check_store):
+                    new_store = Store(owner=owner,
+                                      cpf=cpf,
+                                      name=store,
+                                      balance=value)
+                    db.session.add(new_store)
+                    db.session.commit()
+                else:
+                    check_store.balance += value
+
+                # Get the store.id that already exists and create a File object
+                store = Store.query.filter_by(name=store).first()
                 doc = File(filename=filename,
                            id_user=current_user.id,
+                           id_store=store.id,
                            id_transaction=transaction,
                            date=date,
                            time=time,
-                           value=value,
-                           cpf=cpf,
-                           card_number=card_number,
-                           owner=owner,
-                           store=store)
+                           value=+value,
+                           card_number=card_number,)
                 db.session.add(doc)
                 db.session.commit()
             return render_template('index.html', upload_success=True)
         else:
-            # Check if it is a valid file
+            # Return of an invalid file
             return render_template('index.html', file_error=True)
     return redirect(url_for('home.index'))

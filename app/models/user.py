@@ -11,7 +11,7 @@ def get_user(user_id):
 
 class User(db.Model, UserMixin):
     __tablename__ = "Usuario"
-    id = db.Column("id_Usuario", db.Integer, primary_key=True)
+    id = db.Column("id_Usuario", db.Integer, autoincrement=True, primary_key=True)
     __email = db.Column("Email", db.String, unique=True, nullable=False)
     __password = db.Column("Senha", db.String, nullable=False)
     __fname = db.Column("Nome", db.String, unique=False, nullable=False)
