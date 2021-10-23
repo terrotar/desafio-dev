@@ -19,10 +19,13 @@ def log_user():
     if(request.method == 'POST'):
         email = request.form['email']
         password = request.form['pwd']
+
+        # Check if exists an user with same email and verify password
         user = User.query.filter_by(email=email).first()
         if(not user or not user.verify_password(password)):
             return render_template('login/login.html',
                                    error=True)
+
         else:
             login_user(user)
             return redirect('/')
@@ -54,9 +57,13 @@ def change_pwd():
     elif(request.method == 'POST'):
         old_pwd = request.form['old_pwd']
         new_pwd = request.form['new_pwd']
+
+        # Verify password of current_user
         if(not user.verify_password(old_pwd)):
             return render_template('login/change_pwd.html',
                                    pwd_error=True)
+
+        # Change the new password
         else:
             user.password = new_pwd
             db.session.commit()
@@ -79,9 +86,13 @@ def change_data():
         fname = request.form['fname']
         lname = request.form['lname']
         pwd = request.form['pwd']
+
+        # Verify password of current_user
         if(not user.verify_password(pwd)):
             return render_template('login/change_data.html',
                                    pwd_error=True)
+
+        # Change the new data
         else:
             user.email = email
             user.fname = fname

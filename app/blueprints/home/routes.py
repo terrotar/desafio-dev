@@ -5,6 +5,7 @@ from flask_login import current_user
 # Rename the file's name into a secure pattern
 from werkzeug.utils import secure_filename
 
+# Folder of uploaded files
 from ...config import UPLOAD_FOLDER
 
 from app.config import db

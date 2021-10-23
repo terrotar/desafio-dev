@@ -21,12 +21,16 @@ def register_user():
                         password=request.form['pwd'],
                         fname=request.form['fname'],
                         lname=request.form['lname'])
+
+        # Check if user already exists an user with this email
         email_checker = User.query.filter_by(email=request.form['email']).first()
         if email_checker:
             return render_template('register.html',
                                    email_error=True)
+
+        # Add the new user in database and execute the login
         db.session.add(new_user)
         db.session.commit()
         login_user(new_user)
-        return render_template('index.html')
+        return redirect('/')
     return render_template('register.html')
