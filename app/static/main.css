@@ -62,7 +62,31 @@ section .title-store {
 
 body .table {
     color: #10b93afd !important;
-    width: 21.8rem !important;
-    margin-top: -23rem !important;
-    margin-left: 25rem !important;
+    width: 49rem !important;
+    margin-top: 1.2rem !important;
+    margin-left: 2rem !important;
+    min-height: 13rem !important;
+    position: relative;
+    height: 10rem !important;
+}
+
+
+body .main-card {
+    min-height: 25rem !important;
+}
+
+
+.main-card .card-header {
+    color: #10b93afd !important;
+}
+
+
+.main-card .card-store {
+    display: flex !important;
+    margin-bottom: 20px !important;
+}
+
+
+.card-store .list-group {
+    margin-left: -1rem !important;
 }

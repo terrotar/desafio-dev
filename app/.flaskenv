@@ -1,3 +1,3 @@
 FLASK_APP=__init__.py
 FLASK_ENV=development
-debug=True
+DEBUG=True

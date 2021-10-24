@@ -1,4 +1,3 @@
-
 {% extends 'base.html' %}
 
 
@@ -84,68 +83,68 @@
 
 
 
-    <div class="container"> <!-- .container -->
+    <div class="container"> <!-- .container card -->
 
 
-        <section class="section-table rounded" style="min-height: 35rem;">
-            <br>
+        <div class="card main-card bg-light mb-3" style="max-width: 150rem;"> <!-- .main-card -->
 
-            <h1 class="text-white title-store">Pesquisar Lojas</h1>
-
-
-
-            <div class="container"> <!-- .container -->
+            <div class="card-header h1">Lojas</div>
+            <div class="card-body">
+              <p class="card-text">Clique na loja para obter seus dados.</p>
+            </div>
 
 
-            <div class="card text-white bg-success mb-3" style="max-width: 15rem; min-width: 15rem; min-height: 20rem;"> <!-- .general-card -->
-                <div class="card-header text-center h3">Lojas</div>
-                <div class="card-body" style="min-height: 20rem;"> <!-- .card-stores-->
+            <div class="container card-store bg-dark rounded"> <!-- .container store list -->
+
+                <ul class="list-group d-inline-block">
+
+                {% for store in all_stores %}
+                    <li class="list-group-item lojas"><a href="#">{{ store.name }}</a></li>
+                {% endfor %}
+                </ul>
+                <table class="table table-hover table-dark">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Handle</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>
+                        <td colspan="2">Larry the Bird</td>
+                        <td>@twitter</td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div> <!-- .container store list -->
 
 
-                    {% for store in all_stores %}
-                    <ul style="list-style-type:none;">
-                        <li><a class="card-title">{{ store.name }}</a></li>
-                    </ul>
-                    {% endfor %}
 
-                </div> <!-- .card-stores -->
 
-            </div> <!-- .general-card -->
+            
 
-            </div> <!-- .container -->
-            <table class="table table-striped table-responsive-sm table-dark">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                </tbody>
-              </table>
-        </section>
 
-    </div> <!-- .container -->
+
+
+
+          </div> <!-- .main-card -->
+
+    </div> <!-- .container card -->
 
 
 
