@@ -1,4 +1,5 @@
 from app.config import db
+
 from sqlalchemy.ext.hybrid import hybrid_property
 
 

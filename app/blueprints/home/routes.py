@@ -107,19 +107,20 @@ def get_store(store):
         store = Store.query.filter_by(name=store).first()
         store_files = File.query.filter_by(store=store).all()
         # files = store.files
-        table = {}
+        store_data = {}
         for file in store_files:
             transaction = Transaction.query.get(file.id_transaction)
-            table[len(table)] = {"id_Documento": f"{file.id}",
-                                 "Nome_Arquivo": f"{file.filename}",
-                                 "Nome_Usuario": f"{file.user.fname} {file.user.lname}",
-                                 "Data": f"{file.date}",
-                                 "Hora": f"{file.time}",
-                                 "Loja": f"{store.name}",
-                                 "Dono": f"{store.owner}",
-                                 "Transacao": f"{transaction.description}",
-                                 "Natureza": f"{transaction.nature}",
-                                 "balanco_loja": f"{store.balance}"}
-        # return result[1]["Transacao"]
-        table = [file.id, file.filename, f"{file.user.fname} {file.user.lname}"]
-        return render_template('index.html', table=table)
+            store_data[len(store_data)] = {"Documento": {"Usuario": f"{file.user.fname} {file.user.lname}",
+                                               "ID": f"{file.id}",
+                                               "Nome": f"{file.filename}",
+                                               "Data": f"{file.date}",
+                                               "Hora": f"{file.time}",
+                                               "Transacao": {"Descricao": f"{transaction.description}",
+                                                             "Natureza": f"{transaction.nature}"}},
+
+                                 "Loja": {"Nome": f"{store.name}",
+                                          "Saldo": f"{store.balance}",
+                                          "Dono": {"Nome": f"{store.owner}",
+                                                   "CPF": f"{store.cpf}"}}
+                                 }
+        return store_data

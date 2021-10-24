@@ -90,66 +90,42 @@
 
             <div class="card-header h1">Lojas</div>
             <div class="card-body">
-              <p class="card-text">Clique na loja para obter seus dados.</p>
+              <p class="card-text">Clique nas lojas abaixo para obter seus dados em formato <strong style="color: #10b93afd">JSON</strong></p>
             </div>
 
 
             <div class="container card-store bg-dark rounded"> <!-- .container store list -->
 
-                <ul class="list-group d-inline-block">
+                <ul class="list-group">
 
                 {% for store in all_stores %}
                     <li class="list-group-item lojas"><a href="{{ url_for('home.get_store', store=store.name) }}">{{ store.name }}</a></li>
                 {% endfor %}
                 </ul>
-                <table class="table table-hover table-dark">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">{{ table }}</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                      </tr>
-                    </tbody>
-                  </table>
 
-      
+                <div class="card-body" style="margin-top: -2rem;">
+                  <div class="card-header h1" style="margin-left: -1.25rem;">Pesquisa</div>
+                  <p class="card-text store-text lead text-justify">Ao clicar nas lojas, você será redirecionado para uma página com
+                    a lista dos arquivos divididas em 2 grupos: <strong style="color: #10b93afd"><u>Documento</u></strong> e <strong style="color: #10b93afd"><u>Loja</u></strong>.
+                  </p>
+
+                  <p class="card-text store-text lead text-justify"><strong style="color: #10b93afd"><u>Documento:</u></strong>
+                    Data, Hora, ID, Nome, Usuário que publicou.
+                    Ainda há o subgrupo Transacao, o qual possui os campos Descrição e Natureza(Entrada/Saída).
+                  </p>
+
+                  <p class="card-text store-text lead text-justify"><strong style="color: #10b93afd"><u>Loja:</u></strong>
+                    Nome e Saldo em Conta.
+                    Ainda há o subgrupo Dono, o qual possui os campos CPF e Nome.
+                  </p>
+
+                </div>
+
             </div> <!-- .container store list -->
-
-
-
-
-            
-
-
-
-
 
           </div> <!-- .main-card -->
 
     </div> <!-- .container card -->
-
-
-
 
 
 

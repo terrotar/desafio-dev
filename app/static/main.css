@@ -88,5 +88,16 @@ body .main-card {
 
 
 .card-store .list-group {
+    min-width: 13rem !important;
     margin-left: -1rem !important;
+}
+
+
+.main-card .data-store {
+    color: #10b93afd !important;
+}
+
+
+.card-body .store-text {
+    color: white !important;
 }
