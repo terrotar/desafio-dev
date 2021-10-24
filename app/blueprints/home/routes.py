@@ -31,7 +31,8 @@ ALLOWED_EXT = ['csv', 'txt']
 @home.route('/', methods=['GET', 'POST'])
 def index():
     if(request.method == 'GET'):
-        return render_template('index.html')
+        all_stores = Store.query.all()
+        return render_template('index.html', all_stores=all_stores)
     if(request.method == 'POST'):
         file = request.files['file']
 

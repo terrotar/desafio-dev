@@ -39,3 +39,30 @@ footer {
     margin-left: -369px !important;
     margin-right: -369px !important;
 }
+
+
+body .section-table {
+    background-color: #1b1b1b !important;
+    margin-left: -15px !important;
+    margin-right: -15px !important;
+}
+
+
+section .card {
+    top: 20px !important;
+    left : 20px !important;
+}
+
+
+section .title-store {
+    margin-left: 35px !important;
+    text-decoration: underline !important;
+}
+
+
+body .table {
+    color: #10b93afd !important;
+    width: 21.8rem !important;
+    margin-top: -23rem !important;
+    margin-left: 25rem !important;
+}
