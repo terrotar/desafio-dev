@@ -12,6 +12,7 @@ from app.config import db
 
 from app.models.file import File
 from app.models.store import Store
+from app.models.transaction import Transaction
 
 import os
 
@@ -89,12 +90,36 @@ def index():
                            id_transaction=transaction,
                            date=date,
                            time=time,
-                           value=+value,
+                           value=value,
                            card_number=card_number,)
                 db.session.add(doc)
                 db.session.commit()
-            return render_template('index.html', upload_success=True)
+            return redirect(url_for('home.index', upload_success=True))
         else:
             # Return of an invalid file
             return render_template('index.html', file_error=True)
     return redirect(url_for('home.index'))
+
+
+@home.route('/loja/<store>', methods=['GET'])
+def get_store(store):
+    if(request.method == 'GET'):
+        store = Store.query.filter_by(name=store).first()
+        store_files = File.query.filter_by(store=store).all()
+        # files = store.files
+        table = {}
+        for file in store_files:
+            transaction = Transaction.query.get(file.id_transaction)
+            table[len(table)] = {"id_Documento": f"{file.id}",
+                                 "Nome_Arquivo": f"{file.filename}",
+                                 "Nome_Usuario": f"{file.user.fname} {file.user.lname}",
+                                 "Data": f"{file.date}",
+                                 "Hora": f"{file.time}",
+                                 "Loja": f"{store.name}",
+                                 "Dono": f"{store.owner}",
+                                 "Transacao": f"{transaction.description}",
+                                 "Natureza": f"{transaction.nature}",
+                                 "balanco_loja": f"{store.balance}"}
+        # return result[1]["Transacao"]
+        table = [file.id, file.filename, f"{file.user.fname} {file.user.lname}"]
+        return render_template('index.html', table=table)

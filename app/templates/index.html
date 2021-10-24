@@ -99,14 +99,14 @@
                 <ul class="list-group d-inline-block">
 
                 {% for store in all_stores %}
-                    <li class="list-group-item lojas"><a href="#">{{ store.name }}</a></li>
+                    <li class="list-group-item lojas"><a href="{{ url_for('home.get_store', store=store.name) }}">{{ store.name }}</a></li>
                 {% endfor %}
                 </ul>
                 <table class="table table-hover table-dark">
                     <thead>
                       <tr>
                         <th scope="col">#</th>
-                        <th scope="col">First</th>
+                        <th scope="col">{{ table }}</th>
                         <th scope="col">Last</th>
                         <th scope="col">Handle</th>
                       </tr>
@@ -131,6 +131,8 @@
                       </tr>
                     </tbody>
                   </table>
+
+      
             </div> <!-- .container store list -->
 
 
