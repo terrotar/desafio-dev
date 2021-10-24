@@ -1,0 +1,185 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+    <title>ByCoders - Home</title>
+{% endblock %}
+
+
+{% block body %}
+
+
+    <div class="container">
+        <br>
+        <br>
+
+
+    {% if current_user.is_authenticated %} <!-- Check if user's logged -->
+
+
+    <!--/.jumbotron -->
+    <div class="jumbotron bg-dark">
+
+        <h1 class="display-4">Bem-vindo, <u>{{ current_user.fname }} {{ current_user.lname }}</u>!</h1>
+        <br>
+
+            <p class="lead">Para enviar o arquivo CNAB basta clicar no botão Browse e depois em Enviar.
+            </p>
+
+            <hr class="my-4 bg-light">
+
+
+            <form enctype="multipart/form-data" action="{{ url_for('home.index') }}" method="POST">
+
+                <div class="form-group">
+                    <p>Upload File: 
+                        <input type="file" name="file" />
+                    </p>
+                </div>
+
+                <button class="btn btn-outline-light btn-lg bg-success" type="submit" style="color: white;">Enviar</button>
+
+
+                {% if upload_error %} <!-- Check if file's already in database -->
+                <br>
+                <br>
+                    <p class="lead">Arquivo com mesmo nome já está salvo no banco de dados...
+                    </p>
+                {% endif %}
+
+
+                {% if file_error %} <!-- Check if exists a file -->
+                <br>
+                <br>
+                    <p class="lead">Arquivo não encontrado.
+                    </p>
+                {% endif %}
+
+
+                {% if ext_error %} <!-- Check if file's extensions is allowed -->
+                <br>
+                <br>
+                    <p class="lead">Selecione um arquivo com extensão válida(csv, txt).
+                    </p>
+                {% endif %}
+
+
+                {% if upload_success %} <!-- Warning of success upload -->
+                <br>
+                <br>
+                    <p class="lead">Arquivo enviado com sucesso!
+                    </p>
+                {% endif %}
+
+            </form>
+
+
+    <!--/.jumbotron -->
+    </div>
+
+
+
+
+
+
+
+    <div class="container"> <!-- .container -->
+
+
+        <section class="section-table rounded" style="min-height: 35rem;">
+            <br>
+
+            <h1 class="text-white title-store">Pesquisar Lojas</h1>
+
+
+
+            <div class="container"> <!-- .container -->
+
+
+            <div class="card text-white bg-success mb-3" style="max-width: 15rem; min-width: 15rem; min-height: 20rem;"> <!-- .general-card -->
+                <div class="card-header text-center h3">Lojas</div>
+                <div class="card-body" style="min-height: 20rem;"> <!-- .card-stores-->
+
+
+                    {% for store in all_stores %}
+                    <ul style="list-style-type:none;">
+                        <li><a class="card-title">{{ store.name }}</a></li>
+                    </ul>
+                    {% endfor %}
+
+                </div> <!-- .card-stores -->
+
+            </div> <!-- .general-card -->
+
+            </div> <!-- .container -->
+            <table class="table table-striped table-responsive-sm table-dark">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Handle</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>Larry</td>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                  </tr>
+                </tbody>
+              </table>
+        </section>
+
+    </div> <!-- .container -->
+
+
+
+
+
+
+
+
+    {% else %} <!-- Check if user's logged -->
+
+
+        <!--/.jumbotron -->
+          <div class="jumbotron bg-dark">
+
+            <h1 class="display-4"><u>Bem-vindo</u>!</h1>
+            <br>
+
+                <p class="lead">Esta aplicação é um desafio para devs o qual consiste em receber um arquivo do tipo CNAB através de um Upload,
+                tratar o documento, salvar no banco de dados e disponibilzar no site de maneira dinâmica.
+                </p>
+                <p class="lead">Para ter acesso as funcionalidades do site é necessário realizar um cadastro e efetuar o login.</p>
+
+
+                <hr class="my-4 bg-light">
+                <p class="lead">Já é cadastrado? Só clicar no botão de login ou ir em Profile para logar =]</p>
+
+                <a class="btn btn-outline-light btn-lg bg-success" href="{{ url_for('register.register_user') }}" style="color: white;">Registrar</a>
+                <a class="btn btn-outline-success btn-lg bg-succeess" href="{{ url_for('login.log_user') }}" style="color: white;">Login</a>
+
+        <!--/.jumbotron -->
+        </div>
+
+    </div>
+
+
+    {% endif %} <!-- Check if user's logged -->
+
+{% endblock %}
