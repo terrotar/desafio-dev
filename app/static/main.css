@@ -22,23 +22,25 @@ body nav {
 }
 
 
+.container {
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+}
+
+
 body .bg-dark {
     background-color: #1b1b1b !important;
 }
 
-
-body footer {
+footer {
     background-color: #1b1b1b !important;
     color: white !important;
     padding-top: 10px !important;
-}
-
-
-footer {
-    color: white !important;
     margin-left: -369px !important;
     margin-right: -369px !important;
 }
+
+
 
 
 body .section-table {
@@ -88,8 +90,14 @@ body .main-card {
 
 
 .card-store .list-group {
+    box-shadow: rgb(206, 206, 206) 2px 2px 8px !important;;
     min-width: 13rem !important;
-    margin-left: -1rem !important;
+    margin: 4px 4px 4px 4px !important;
+}
+
+
+.card-store .lojas {
+    background-color: #10b93afd !important;
 }
 
 

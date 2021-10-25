@@ -86,25 +86,26 @@
     <div class="container"> <!-- .container card -->
 
 
-        <div class="card main-card bg-light mb-3" style="max-width: 150rem;"> <!-- .main-card -->
+        <div class="card main-card bg-dark mb-3" style="max-width: 150rem;"> <!-- .main-card -->
 
             <div class="card-header h1">Lojas</div>
             <div class="card-body">
-              <p class="card-text">Clique nas lojas abaixo para obter seus dados em formato <strong style="color: #10b93afd">JSON</strong></p>
+              <p class="card-text text-white">Clique nas lojas abaixo para obter seus dados em formato <strong style="color: #10b93afd">JSON</strong></p>
             </div>
 
 
             <div class="container card-store bg-dark rounded"> <!-- .container store list -->
 
-                <ul class="list-group">
+                <ul class="list-group rounded">
 
                 {% for store in all_stores %}
-                    <li class="list-group-item lojas"><a href="{{ url_for('home.get_store', store=store.name) }}">{{ store.name }}</a></li>
+                    <li class="list-group-item lojas bg-dark"><a href="{{ url_for('home.get_store', store=store.name) }}" style="color: white;">{{ store.name }}</a></li>
                 {% endfor %}
                 </ul>
 
                 <div class="card-body" style="margin-top: -2rem;">
                   <div class="card-header h1" style="margin-left: -1.25rem;">Pesquisa</div>
+                  <br>
                   <p class="card-text store-text lead text-justify">Ao clicar nas lojas, você será redirecionado para uma página com
                     a lista dos arquivos divididas em 2 grupos: <strong style="color: #10b93afd"><u>Documento</u></strong> e <strong style="color: #10b93afd"><u>Loja</u></strong>.
                   </p>
